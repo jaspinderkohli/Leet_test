@@ -1,20 +1,15 @@
-class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        newdic = {}
+        for x in range(0,len(nums)):
+            if nums[x] in newdic:
+                return [newdic[nums[x]], x]
+            else:
+                newdic[target - nums[x]] = x
+
         
-        dic = {}
-
-        for i,x in enumerate(nums):
-            if target - x in dic.keys():
-                return [i, dic[target-x]]
-            dic[x] = i
-
-        '''
-            nums = [2,7,11,15]
-
-            target - x ==> 9 - 7 == 2
-            dic = {
-                2 : 0
-                7 : 1
-            }
-
-        '''
