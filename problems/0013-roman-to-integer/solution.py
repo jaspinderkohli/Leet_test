@@ -1,16 +1,10 @@
-class Solution:
-    def romanToInt(self, s: str) -> int:
-        '''
-            ex 1 
-                Inp = "III"
-                output = 3
-
-            ex2 
-                Inp = "LIV"
-                op = "5 - 1 + 50" ==> 54
-        '''
-        n = len(s)
-        m = {
+class Solution(object):
+    def romanToInt(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        dic = {
             'I': 1,
             'V': 5,
             'X': 10,
@@ -19,15 +13,10 @@ class Solution:
             'D': 500,
             'M': 1000
         }
-        ans = 0
-        prev_value = 0
-        
-        for i in range(n - 1, -1, -1):
-            current_value = m[s[i]]
-            if current_value < prev_value:
-                ans -= current_value
-            else:
-                ans += current_value
-            prev_value = current_value
-        
-        return ans
+        s = s.replace('IV','IIII').replace('IX','VIIII')
+        s = s.replace('XL','XXXX').replace('XC','LXXXX')
+        s = s.replace('CD','CCCC').replace('CM','DCCCC')
+        total = 0
+        for i in range(0,len(s)):
+            total += dic[s[i]]
+        return total
