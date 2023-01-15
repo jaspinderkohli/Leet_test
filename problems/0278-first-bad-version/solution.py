@@ -10,6 +10,9 @@ class Solution:
         :type n: int
         :rtype: int
         """
+        """
+            Binary Search, mid = f + l // 2,  else f = mid + 1
+        """
         i = 1
         high = n
         while(i < high):
