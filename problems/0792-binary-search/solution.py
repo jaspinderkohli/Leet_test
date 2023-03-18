@@ -5,7 +5,9 @@ class Solution:
         #         return(i)
         # return(-1)
         """ 
-
+            Using binary serarch 
+            l 0
+            h last element
         """
         l=0
         h=len(nums)-1
