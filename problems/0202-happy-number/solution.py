@@ -1,22 +1,25 @@
 class Solution:
     def isHappy(self, n: int) -> bool:
-        # Set to keep track of numbers encountered during the process
-        hset = set()
-
-        # Continue the loop until the number becomes 1
-        while n != 1:
-            # Check if the current number is already in the set, indicating a cycle
-            if n in hset:
-                return False  # If a cycle is detected, the number is not a happy number
-
-            # Add the current number to the set, marking it as visited
-            hset.add(n)
-
-            # Calculate the sum of the squares of each digit and update the current number
-            n = sum([int(i) ** 2 for i in str(n)])
-
-        # If the loop exits with the number being 1, it is a happy number
-        else:
-            return True
+        # Define the happy_number function that takes a number and a set of visited numbers as input
+        def happy_number(n, visited=set()):
+            # Initialize the total sum to 0
+            total_sum = 0
+            # Iterate over the digits of the number
+            for digit in str(n):
+                # Add the square of each digit to the total sum
+                total_sum += int(digit) ** 2
+            # If the total sum is 1, return True (the number is happy)
+            if total_sum == 1:
+                return True
+            # If the total sum has been seen before, return False (there is a cycle)
+            elif total_sum in visited:
+                return False
+            # Otherwise, add the total sum to the set of visited numbers and recurse with the new number
+            else:
+                visited.add(total_sum)
+                return happy_number(total_sum, visited)
+        
+        # Call the happy_number function with the input number and return the result
+        return happy_number(n)
 
 
