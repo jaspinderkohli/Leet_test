@@ -1,25 +1,25 @@
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
-        ransomNote_dict = {}
-        for x in ransomNote:
-            if x not in ransomNote_dict:
-                ransomNote_dict[x] = 1
-            else:
-                ransomNote_dict[x] +=1
-
-        magazine_dict = {}
-        for x in magazine:
-            if x not in magazine_dict:
-                magazine_dict[x] = 1
-            else:
-                magazine_dict[x] +=1
-
-        for y in ransomNote_dict:
-            try:
-                if ransomNote_dict[y] > magazine_dict[y]:
-                    return False
-            except:
+        '''
+        need two hashmaps, one with freq from magazine, other with freq of 
+        ransomNote. is each freq in ransomNote is <= that freq in magazine, it is cool, otherwise bail
+        '''
+        def buildFreq(string):
+            res = {}
+            for char in string:
+                if char in res:
+                    res[char] += 1
+                else:
+                    res[char] = 1
+            return res
+        
+        ransomFreq = buildFreq(ransomNote)
+        magazineFreq = buildFreq(magazine)
+        
+        for key in ransomFreq.keys():
+            if key not in magazineFreq:
                 return False
+            if ransomFreq[key] > magazineFreq[key]:
+                return False
+        
         return True
-
-
