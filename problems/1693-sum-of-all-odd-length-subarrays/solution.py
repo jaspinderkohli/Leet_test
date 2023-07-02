@@ -7,7 +7,6 @@ class Solution:
                 subarray = arr[i:j+1]
                 if len(subarray) %2 ==1:
                     tot_sum += sum(subarray)
-                    # tests12
         return tot_sum
         
 
