@@ -7,5 +7,6 @@ class Solution:
                 if i != j and words[i] in words[j]:
                     res.append(words[i])
                     break
+                    # asssasdsad
         return res
 
