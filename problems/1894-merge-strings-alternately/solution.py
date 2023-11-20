@@ -5,16 +5,27 @@ class Solution:
             word2 =  p q r
         '''
         
-        max_len = max(len(word1), len(word2)) - 1
-        min_len = min(len(word1), len(word2)) - 1
-        out =''
-        for i in range(max_len+1):
-            if i <= min_len:
-                out += word1[i] + word2[i]
-            else:
-                if max_len == len(word1)-1:
-                    out += word1[i]
-                else:
-                    out += word2[i]
-        return out
-            
+        # max_len = max(len(word1), len(word2)) - 1
+        # min_len = min(len(word1), len(word2)) - 1
+        # out =''
+        # for i in range(max_len+1):
+        #     if i <= min_len:
+        #         out += word1[i] + word2[i]
+        #     else:
+        #         if max_len == len(word1)-1:
+        #             out += word1[i]
+        #         else:
+        #             out += word2[i]
+        # return out
+
+        cnt = i = j = 0
+        con = ''
+        while i < len(word1) or j < len(word2):
+            if i < len(word1):
+                con += word1[i]
+                i+=1
+            if j < len(word2):
+                con += word2[j]
+                j+=1
+        return con
+        
