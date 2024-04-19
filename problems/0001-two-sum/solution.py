@@ -1,8 +1,20 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         
-        num_dic = {}
-        for i, x in enumerate(nums):
-            if target - x in num_dic.keys():
-                return [i , num_dic[target - x]]
-            num_dic[x] = i
+        dic = {}
+
+        for i,x in enumerate(nums):
+            if target - x in dic.keys():
+                return [i, dic[target-x]]
+            dic[x] = i
+
+        '''
+            nums = [2,7,11,15]
+
+            target - x ==> 9 - 7 == 2
+            dic = {
+                2 : 0
+                7 : 1
+            }
+
+        '''
