@@ -1,21 +1,12 @@
 class Solution:
     def reverseWords(self, s: str) -> str:
-        '''
-            two pointers
-            
-            s = "the sky is blue"
-                  ^         ^
-                 blue sky is the
-                      ^   ^
-            OP = blue is sky the
-            
-            
-        '''
-        s = s.split()
-        
-        i, j = 0, len(s) -1
+        words = s.split()
+        i, j = 0 , len(words) - 1
+        # return " ".join(words[::-1])
+
         while i < j:
-            s[i], s[j] = s[j], s[i]
+            words[i], words[j] = words[j], words[i]
             i+=1
             j-=1
-        return ' '.join(s)
+        return " ".join(words)
+
