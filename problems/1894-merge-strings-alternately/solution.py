@@ -1,25 +1,34 @@
 class Solution:
     def mergeAlternately(self, word1: str, word2: str) -> str:
         '''
-        word1 = "abc"
-        word2 = "pqr"
-        res = "apbqcr"
+        Example 1 
 
-        ques1 = lentgh same?
+            w1 = 'abc'
+            w2 = 'pqr'
+
+            merged = 'apbqcr'
         
-        cntr i,j = 0
+        Example 2
+            w1 = 'ab'
+            w2 = 'pqrs'
+
+            merged = 'apbqrs'
+
+
 
         '''
         i = j = 0
         conc = ''
-        while i < len(word1) or j < len(word2):
-            if i < len(word1):
-                conc += word1[i]
-                i+=1
-            if j < len(word2):
-                conc += word2[j]
-                j+=1
+        while i < len(word1) and j < len(word2):
+            conc += word1[i] + word2[j]
+            # print(word1[i], word2[j])
+            i+=1
+            j+=1
+        conc+= word1[i:]
+        conc+= word2[j:]
         return conc
+
+
 
         
 
