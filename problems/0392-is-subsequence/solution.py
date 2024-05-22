@@ -1,17 +1,26 @@
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
         '''
-            compare both strings s and t and add common characters to a list
-            then compare that list
-        '''
+            Example 1 
+                s = 'abc'
+                t = 'ahbgdc'
 
+                idx == ??
+                
+
+        '''
         i = j = 0
-        lis = []
-        while i < len(s) and j < len(t):
+        con = ''
+        
+        if not s:
+            return True
+
+        while j < len(t) and i < len(s):
             if s[i] == t[j]:
-                lis.append(s[i])
-                i+=1
+                con+=t[j]
                 j+=1
+                i+=1
             else:
                 j+=1
-        return ''.join(lis) == s
+        return s == con
+
