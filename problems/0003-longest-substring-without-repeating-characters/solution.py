@@ -1,35 +1,41 @@
-class Solution(object):
-    def lengthOfLongestSubstring(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
-        # list = ''
-        # for x in s:
-        #     if x not in list :
-        #         list+=x
-        #     else:
-        #         break
-        # print list
-        # for i in range(0,len(s)):
-        #     word = set()
-        #     for j in range(i,len(s)):
-        #         if s[j] in word:
-        #             break
-        #         word.add(s[j])
-        #     return word
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        '''
+            Example 1
+
+                s = "abcabcbb"
+                output 3 -> 'a b c'
+
+            Exmample 2
+                s = "bbbbb"
+                output 1 -> 'b'
+
+            Example 3 
+                s = "pwwkew"
+                ==> pw / wke / ew
+                ouput 3
+
+            new_str = ''
+
+        '''
         
-        left_most_valid = 0
-        longest = 0
-        last_seen = {}
+        
+        l, r = 0, 0
 
-        for i, letter in enumerate(s):
-            if letter in last_seen:
-                # left_most_valid must be greater than any position which has been seen again
-                left_most_valid = max(left_most_valid, last_seen[letter] + 1)
-            last_seen[letter] = i
+        if not len(s):
+            return 0
 
-            # Length of substring from left_most_valid to i is i - left_most_valid + 1
-            longest = max(longest, i - left_most_valid + 1)
+        char_set = set()
+        max_len = 0
 
-        return longest
+        while r < len(s):
+            if s[r] not in char_set:
+                char_set.add(s[r])
+                max_len = max(max_len, len(s[l:r+1]))
+                r+=1
+            else:
+                char_set.remove(s[l])
+                l+=1
+        return max_len
+
+        
