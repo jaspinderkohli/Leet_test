@@ -43,3 +43,4 @@ class Solution:
                     nums[idx] = i
                     idx+=1
                     dic[i]-=1
+                    # 
